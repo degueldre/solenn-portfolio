@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Degueldre Solenn Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css">
+    <link href="https://fonts.cdnfonts.com/css/elephant" rel="stylesheet">
+</head>
+<body>
+
+        <div id="baniere">
+            <div class="container">
+                <div id="nom">
+                    <h1>Solenn Degueldre</h1>
+                    
+                </div>
+                <div id="video-background-container">
+                    <video 
+                        id="video-light"  
+                        class="video-mode-toggle" /* Nouvelle classe pour le ciblage */
+                        width="100%" 
+                        height="auto"
+                        autoplay 
+                        muted 
+                        loop
+                        playsinline
+                        poster="images/photo-canards-banière.png"> 
+                        <source src="vidéos/3INFO_Degueldre_Solenn_Banner_2024.mp4" type="video/mp4"> 
+                        <source src="vidéos/3INFO_Degueldre_Solenn_Banner_2024.webm" type="video/webm">
+                    </video>
+
+                    <video 
+                        id="video-dark"
+                        class="video-mode-toggle" /* Nouvelle classe pour le ciblage */
+                        width="100%" 
+                        height="auto"
+                        autoplay 
+                        muted 
+                        loop
+                        playsinline
+                        poster="images/photo-canards-banière.png"> 
+                        <source src="vidéos/bannière_fond_noir.mp4" type="video/mp4"> 
+                        <source src="vidéos/bannière_fond_noir.webm" type="video/webm">
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div id="header">
+            <div class="container">
+                <nav id="menu">
+                    <a href="#introduction">Introduction</a>
+                    <a href="#projet">Projet</a>
+                    <a href="#contacts">Contacts</a>
+                    
+                    <input type="checkbox" id="dark-mode-toggle" aria-label="Activer le mode sombre">
+            
+                    <label for="dark-mode-toggle" id="toggle-label">
+                        <span id="toggle-icon">🌙</span> </label>
+
+                </nav>
+            </div>
+        </div>
+
+        <div id="introduction">
+            <div class="container">
+                <div id="moi">
+                    <img src="images/cadre-photo-personne.png" alt="moi">
+                </div>
+                <div id="text_introduction">
+                    <h2>Solenn Degueldre</h2>
+                    <p>Étudiante en 3e bachelier Arts Graphiques, je suis persévérante, pleine de ressources et j’apprends vite.
+Mon objectif est de gagner de l’expérience dans le milieu professionnel.</p>
+                    <h3>Formations</h3>
+                    <p>- CESS option Maths-Sciences</p>
+                    <p>- Bachelier Arts Graphiques Option Infographie, Condorcet</p>
+                    <h3>Expériences</h3>
+                    <p>- Stage d’observation à Repos Production _ 2023</p>
+                </div>
+                <hr>
+                <div id="text_competences">
+                    <div class="col">
+                        <div class="competence icone-illustrator">
+                            <img src="images/icone-illustrator.png" alt="Illustrator">
+                            <p>Illustrator</p>
+                        </div>
+                        <div class="competence icone-indesign">
+                            <img src="images/icone-indesign.png" alt="InDesign">
+                            <p>InDesign</p>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="competence icone-photoshop">
+                            <img src="images/icone-photoshop.png" alt="Photoshop">
+                            <p>Photoshop</p>
+                        </div>
+                        <div class="competence icone-after-effects">
+                            <img src="images/icone-after-effetcs.png" alt="After Effects">
+                            <p>After Effects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="projet">
+    <div class="container">
+        <div id="affiche">
+            <a href="#lightbox-1">
+                <img src="images/affiche-carnaval-de-binche.png" alt="affiche">
+            </a>
+        </div>
+        <div id="lightbox-1" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a> <img src="images/affiche-carnaval-de-binche.png" alt="affiche agrandie">
+        </div>
+        <div id="text_projet">
+            <h2>Affiche</h2>
+            <h2>du Carnaval</h2>
+            <h2>de Binche</h2>
+            <p>Conception et réalisation d’une affiche dans le cadre du concours d’affiches pour le carnaval de binche 2026.</p>
+            <p>Cette affiche a été réalisée dans le cadre du cours de graphisme, sur Adobe illustrator.</p>
+        </div>
+
+        <div id="mockups">
+            <a href="#lightbox-2">
+                <img src="images/mockup-carnaval-1.png" alt="mockup">
+            </a>
+            <a href="#lightbox-3">
+                <img src="images/mockup-carnaval-2.png" alt="mockup">
+            </a>
+            <a href="#lightbox-4">
+                <img src="images/mockup-carnaval-3.png" alt="mockup">
+            </a>
+        </div>
+        <div id="lightbox-2" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a>
+            <img src="images/mockup-carnaval-1.png" alt="mockup agrandi 1">
+        </div>
+        <div id="lightbox-3" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a>
+            <img src="images/mockup-carnaval-2.png" alt="mockup agrandi 2">
+        </div>
+        <div id="lightbox-4" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a>
+            <img src="images/mockup-carnaval-3.png" alt="mockup agrandi 3">
+        </div>
+        <div id="mockups2">
+            <a href="#lightbox-5">
+                <img src="images/mockup-carnaval-4.png" alt="mockup">
+            </a>
+            <a href="#lightbox-6">
+                <img src="images/mockup-carnaval-5.png" alt="mockup">
+            </a>
+        </div>
+        <div id="lightbox-5" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a>
+            <img src="images/mockup-carnaval-4.png" alt="mockup agrandi 4">
+        </div>
+        <div id="lightbox-6" class="lightbox">
+            <a href="#projet" class="close-btn">&times;</a>
+            <img src="images/mockup-carnaval-5.png" alt="mockup agrandi 5">
+        </div>
+    </div>
+</div>
+        <div id="contacts">
+            <div class="container">
+                <div id="text_contacts">
+                    <h2>Contacts</h2>
+                </div>
+                <form id="contact-form" 
+                      action="mailto:solenn.degueldre@condorcet.be" 
+                      method="POST" 
+                      enctype="text/plain">
+                    <div class="form-wrapper">
+                        <div class="form-group">
+                            <label for="nom">Nom :</label>
+                            <input type="text" id="nom-form" name="Nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail :</label>
+                            <input type="email" id="email-form" name="Email" required>
+                        </div>
+        
+                        <div class="form-group message-group">
+                            <label for="message">Message :</label>
+                            <textarea id="message-input" name="Message" rows="1" required></textarea>
+                        </div>
+        
+                        <div class="form-group submit-group">
+                            <button type="submit" id="submit-btn">Envoi</button>
+                        </div>
+        
+                    </div>
+                </form>
+                <div id="liens">
+                    <img src="images/icone-linkedin.png" alt="linkedin">
+                    <img src="images/icone-mail.png" alt="mail">
+                    <img src="images/icone-telephone.png" alt="telephone">
+                    <a href="https://www.linkedin.com/in/solenn-degueldre-a2677b38a/" target="_blank">Solenn Degueldre</a>
+                    <a href="mailto:solenn.degueldre@condorcet.be">solenn.degueldre@condorcet.be</a>
+                    <a href="tel:+32476500239">0476 50 02 39</a>
+                </div>
+            </div>
+        </div>
+        <div id="footer">
+            <div class="container">
+                <div id="text_footer">
+                    <p>Design by Solenn Degueldre</p>
+                </div>
+            </div>
+        </div>
+  
+</body>
+</html>

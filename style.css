@@ -1,0 +1,686 @@
+html{
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px;
+}
+
+.container{
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+#baniere{
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffd000;
+    height: 593px;
+}
+#baniere img{
+    margin-top: 200px;
+}
+/* Anciennement #myVideo, maintenant #video-light */
+#video-light { 
+    /* Définir une largeur et une hauteur spécifiques */
+    width: 700px;
+    object-fit: contain; 
+}
+/* Ajoutez ceci pour masquer la vidéo sombre par défaut */
+#video-dark {
+    display: none; /* Masque la vidéo sombre */
+}
+/* Assurez-vous que #myVideo dans #video-background-container dans votre CSS est remplacé par #video-light */
+#video-background-container {
+    /* Propriété Flexbox clé : transforme le conteneur en un conteneur flexible */
+    display: flex; 
+    
+    /* Centrage horizontal (sur l'axe principal) */
+    justify-content: center; 
+    
+    /* Centrage vertical (sur l'axe secondaire) */
+    align-items: center;
+    padding-top: 200px;
+}
+#header{
+    width: 100%;
+    margin: 0% auto;
+    background-color: black;
+    height: 62px;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.5);
+    z-index: 100;
+}
+#header a{
+    color: white;
+    text-decoration: none;
+    font-size: 28px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 40px;
+}
+#menu{
+    width: 780px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    font-family: Arial, Helvetica, sans-serif
+}
+#introduction{
+    margin: 0% auto;
+    height: 1191px;
+}
+#moi img{
+    width: 324px;
+    height: 430px;
+}
+#text_introduction{
+    width: 540px;
+    padding-top: 154px;
+    margin-left: auto;
+    text-align: left;
+}
+#text_competences {
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 81px;
+    gap: 50px; 
+    background-image: url("images/icone-français.gif"), 
+                      url("images/icone-anglais.gif");
+    background-repeat: no-repeat;
+    background-position-x: calc(50% + 281px);
+    background-position-y: calc(50% - 15px), calc(50% + 120PX);
+}
+.col {
+    display: flex;
+    flex-direction: column;
+    gap: 55px; 
+    padding-top: 100px;
+}
+.competence img {
+    width: 82px; 
+    height: 82px; 
+    object-fit: contain; 
+}
+#text_competences p {
+    font-size: 20px; 
+    font-family: Arial, Helvetica, sans-serif; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+    padding-left: 10px;
+}
+.competence {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    position: relative;
+}
+#introduction h2{
+    font-size: 60px;
+    margin-bottom: 60px;
+    font-family: 'Elephant', sans-serif;
+}
+#introduction h3{
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 30px;
+    
+}
+#introduction p{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-bottom: 40px;
+}
+#nom{
+    text-align: center;
+}
+#baniere h1{
+    position: relative; top: 150px;
+    font-size: 80px;
+    font-family: 'Elephant', sans-serif;   
+    color: white;           
+}
+#projet{
+    height: 1200px;
+    background-color: #ffd800;
+    box-shadow: 0px 0px 15px rgb(0, 0, 0, 0.5);
+    padding: 80px 0;
+}
+#projet .container{
+    display: grid;
+    grid-template-columns: (3 , 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 20px;
+    row-gap: 20px;
+    align-items: start;
+    text-decoration: none; 
+    border: none;
+}
+#affiche{
+    /* Prend seulement la colonne 3 */
+    grid-column: 3 / 4; 
+    grid-row: 1; 
+    
+    display: flex; 
+    justify-content: center;
+}
+#affiche a, #affiche img {
+    max-width: 100%;
+    height: auto;
+}
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Caché et transparent par défaut */
+    pointer-events: none; /* Désactive les interactions quand cachée */
+    transition: opacity 0.3s ease;
+}
+
+/* Règle essentielle : affiche la lightbox quand son ID est dans l'URL (via le lien #ID) */
+.lightbox:target {
+    opacity: 1;
+    pointer-events: auto; /* Active les interactions quand visible */
+}
+
+/* Image dans la Lightbox */
+.lightbox img {
+    max-width: 90%; 
+    max-height: 90%;
+    object-fit: contain; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    /* Transition pour l'image (optionnel, pour un effet cool) */
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+/* Anime l'image quand la lightbox est ciblée (pour l'effet d'apparition) */
+.lightbox:target img {
+    transform: scale(1);
+}
+
+/* Bouton de Fermeture (X) */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1;
+    transition: 0.3s;
+    text-decoration: none; /* Enlève le soulignement du lien */
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: #ffd800; 
+    cursor: pointer;
+}
+
+/* Correction pour les images de projet */
+#affiche img, #mockups img, #mockups2 img {
+    cursor: zoom-in; /* Indique que l'image est cliquable */
+}
+#contacts{
+    height: 1150px;
+}
+#footer{
+    height: 130px;
+    background-color: #ffd800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 10px rgb(0, 0, 0, 0.5);
+}
+#projet h2{
+    font-size: 60px;
+    font-family: 'Elephant', sans-serif;
+    color: white;
+}
+#projet p{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 60px;
+}
+#text_projet{
+    display: grid;
+    grid-column: 1 / 3;
+    grid-row: 1;
+    padding-top: 40px;   /* ou même 0 si tu veux qu’il commence plus haut */
+    padding-bottom: 40px;
+    width: 540px;
+}
+#mockups{
+    grid-column: 1 / 4;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+}
+#mockups2{
+    grid-column: 1 / 4;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+}
+#text_footer{
+    font-family: Arial, Helvetica, sans-serif;
+    width: 940px;
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    align-content: left;
+}
+#contacts h2{
+    font-size: 60px;
+    font-family: 'Elephant', sans-serif;
+    padding-bottom: 60px;
+}
+#text_contacts{
+    display: flex;
+    justify-content: center;
+    padding-top: 157px;
+}
+#liens{
+    padding-top: 60px;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 0px;
+    align-items: center;
+    place-items: center;
+}
+#contacts a{
+    color: black;
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+#contact-form {
+    max-width: 800px; /* Ajuster la largeur du formulaire */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.form-wrapper {
+    /* Encadrement blanc du formulaire */
+    border: 2px solid black;
+    border-radius: 40px;
+    padding: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 80px; /* Espace entre les groupes de champs */
+    background-color: white; /* Assurez-vous que le fond est blanc */
+    box-sizing: border-box;
+}
+
+.form-group {
+    display: flex;
+    align-items: center; /* Aligner label et input sur la même ligne */
+    gap: 20px;
+}
+/* Style pour le groupe Message/Textarea (Label aligné à gauche, Textarea prend le reste) */
+.form-group.message-group {
+    display: flex;
+    align-items: center; 
+    gap: 20px; 
+}
+
+#contact-form label {
+    
+    font-size: 30px; /* Grande taille de police pour les labels */
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    min-width: 150px; /* Assure que les labels ont une largeur constante */
+    text-align: left;
+}
+
+#contact-form input,
+#contact-form textarea {
+    /* Style minimaliste : une simple ligne */
+    flex-grow: 1; /* Prend l'espace restant */
+    padding: 0;
+    border: none;
+    border-bottom: 3px solid black; /* La ligne de saisie */
+    font-size: 20px;
+    background-color: transparent;
+    transition: border-bottom-color 0.3s;
+    height: 35px; /* Hauteur pour les inputs */
+    line-height: 35px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#contact-form textarea {
+    /* Assurez-vous que le textarea ressemble aussi à une ligne */
+    resize: none;
+    height: 35px; /* Maintient une hauteur d'une seule ligne */
+    overflow: hidden;
+}
+/* Le textarea conserve les styles d'agrandissement au focus */
+#message-input {
+    flex-grow: 1;
+    resize: none; 
+    overflow: hidden; 
+    height: 35px; /* Hauteur par défaut d'une ligne */
+    /* ... (autres styles de ligne noire existants) ... */
+}
+/* Règle pour agrandir le textarea quand il est cliqué */
+#message-input:focus {
+    /* Définissez la hauteur souhaitée pour la zone de message étendue */
+    height: 150px; /* Par exemple, 150px de haut */
+    
+    /* Optionnel : Rendre la transition plus fluide */
+    transition: height 0.3s ease-in-out;
+    
+    /* Retirer overflow:hidden pour permettre le défilement */
+    overflow: auto; 
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-bottom-color: #ffd800; /* Couleur d'accentuation au focus */
+    outline: none;
+}
+#submit-btn {
+    background-color: #ffd800; /* Changez cette couleur ! */
+    color: black;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0px 50px; /* Changez ces valeurs pour la taille */
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex-shrink: 0; 
+    height: 45px; 
+}
+.form-group.submit-group {
+    display: flex;
+    
+    /* 1. Mettez cette propriété pour aligner le contenu à droite */
+    justify-content: flex-end; 
+    
+    /* 2. Assurez-vous d'avoir de l'espace en haut, si nécessaire */
+
+} 
+
+/* Style au survol (hover) */
+#submit-btn:hover {
+    background-color: #ffc800; /* Changez cette couleur pour le survol ! */
+}
+#canards{
+    margin: 0 auto;
+    padding-top: 150px;
+}
+#moi{
+    float: left;
+    padding-top: 175px;
+}
+
+hr{
+    border: none;
+    height: 5px;
+    background-color: #ffd800;
+    margin-top: 80px;
+}
+/* ---------------------------------------------------- */
+/* NOUVEAU : STYLE DU BOUTON DE BASCULEMENT (Lune) */
+/* ---------------------------------------------------- */
+
+#dark-mode-toggle {
+    display: none; /* Cache la case à cocher d'origine */
+}
+
+#toggle-label {
+    cursor: pointer;
+    font-size: 30px;
+    padding: 10px;
+    /* Positionnement pour qu'il soit à côté du menu */
+    position: absolute;
+    right: 20px; /* Ajustez selon votre mise en page */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 101; /* Assurez-vous qu'il est au-dessus du header */
+    color: white; /* Couleur par défaut (clair) */
+}
+
+/* L'icône par défaut sera la Lune (🌙) pour indiquer qu'on peut passer au mode sombre */
+#toggle-icon {
+    transition: transform 0.3s; 
+}
+
+@media (max-width: 768px) {
+    /* Adapter la navigation pour qu'elle ne déborde pas */
+    #menu {
+        width: 100%;
+        gap: 20px; /* Réduire l'espace entre les liens */
+        padding: 0 10px;
+    }
+
+    #header a {
+        width: 100%; /* Permettre aux liens de prendre toute la place disponible */
+        font-size: 20px; 
+        height: 35px;
+    }
+
+    /* Adapter le H1 pour qu'il soit plus petit */
+    #baniere h1 {
+        font-size: 60px;
+    }
+    #moi, #text_introduction {
+        width: 50%;
+        font-size: 14px;
+    }
+    #moi img{
+        width: 300px;
+        height: auto;
+        padding-top: 100px;
+    }
+    #introduction {
+        height: 1200px;
+    }
+}
+
+/* ======================================================= */
+/* === DARK MODE : Basé sur la case à cocher :checked (body:has) === */
+/* ======================================================= */
+
+/* ---------------------------------------------------- */
+/* 1. COULEURS DE FOND ET DE TEXTE GLOBALES (BODY) */
+/* ---------------------------------------------------- */
+body:has(#dark-mode-toggle:checked) {
+    /* Fond global très sombre */
+    background-color: #000000; 
+    /* Texte global clair */
+    color: #f0f0f0;           
+}
+
+/* ---------------------------------------------------- */
+/* 2. MODIFICATION DU BOUTON (CHANGEMENT DE L'ICÔNE) */
+/* ---------------------------------------------------- */
+body:has(#dark-mode-toggle:checked) #toggle-label {
+    /* L'icône change pour le Soleil (si elle a été codée en JS, sinon elle garde le symbole initial) */
+    color: #ffd800; /* Le soleil est jaune */
+}
+
+/* Vous pouvez forcer le contenu de l'icône via content si l'icône est un pseudo-élément.
+   Puisque vous utilisez un <span> avec '🌙', nous laissons le JS gérer le contenu,
+   mais changeons la couleur pour indiquer l'état. */
+
+/* ---------------------------------------------------- */
+/* 3. SECTION HEADER (BARRE DE NAVIGATION) */
+/* ---------------------------------------------------- */
+body:has(#dark-mode-toggle:checked) #header {
+    background-color: #ffd800; 
+    box-shadow: 0px 5px 10px rgb(255, 255, 255, 0.1); /* Ombre blanche légère */
+}
+
+/* Liens de navigation */
+body:has(#dark-mode-toggle:checked) #header a {
+    color: #000000; /* Texte clair */
+    border: 2px solid #000000; /* Bordure claire */
+}
+
+/* ---------------------------------------------------- */
+/* 4. SECTION BANNER (#baniere) */
+/* ---------------------------------------------------- */
+body:has(#dark-mode-toggle:checked) #baniere {
+    background-color: #000000;
+}
+
+body:has(#dark-mode-toggle:checked) #baniere h1 {
+    color: #f0f0f0; /* Titre clair */
+}
+
+/* ---------------------------------------------------- */
+/* 5. SECTION INTRODUCTION (#introduction) */
+/* ---------------------------------------------------- */
+
+/* Ligne de séparation */
+body:has(#dark-mode-toggle:checked) hr {
+    background-color: #ffd800; /* Garde la ligne jaune pour l'accentuation */
+}
+
+/* Photo (filtre invert) */
+body:has(#dark-mode-toggle:checked) #moi img {
+    filter: invert(1);
+}
+
+/* ---------------------------------------------------- */
+/* 6. GESTION DE LA VIDÉO BANNIÈRE (Remplacement) */
+/* ---------------------------------------------------- */
+
+/* Masque la vidéo Light Mode (qui était affichée par défaut) */
+body:has(#dark-mode-toggle:checked) #video-light {
+    display: none !important;
+}
+
+/* Affiche la vidéo Dark Mode (qui était masquée par défaut) */
+body:has(#dark-mode-toggle:checked) #video-dark {
+    display: block !important; 
+    
+    /* Réappliquez les styles de taille et de positionnement de #myVideo */
+    width: 700px;
+    object-fit: contain;
+}
+
+/* ---------------------------------------------------- */
+/* 7. CORRECTION DES ICÔNES DE COMPÉTENCES (REMPLACEMENT) */
+/* ---------------------------------------------------- */
+
+/* Masque les images originales des icônes des logiciels */
+body:has(#dark-mode-toggle:checked) .icone-illustrator img,
+body:has(#dark-mode-toggle:checked) .icone-indesign img,
+body:has(#dark-mode-toggle:checked) .icone-photoshop img,
+body:has(#dark-mode-toggle:checked) .icone-after-effects img {
+    opacity: 0;
+}
+
+/* Affiche la nouvelle icône Dark Mode via pseudo-élément (Règles générales) */
+body:has(#dark-mode-toggle:checked) .icone-illustrator::before,
+body:has(#dark-mode-toggle:checked) .icone-indesign::before,
+body:has(#dark-mode-toggle:checked) .icone-photoshop::before,
+body:has(#dark-mode-toggle:checked) .icone-after-effects::before {
+    content: ''; 
+    position: absolute;
+    left: 0px; /* Ajuster la position X (correspond à votre gap: 10px) */
+    top: 0; 
+    width: 82px; 
+    height: 82px; 
+    
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* --- RÈGLES SPÉCIFIQUES POUR CHAQUE ICÔNE (CHEMIN) --- */
+body:has(#dark-mode-toggle:checked) .icone-illustrator::before {
+    background-image: url('images/icone-illustrator-white.png');
+}
+
+body:has(#dark-mode-toggle:checked) .icone-indesign::before {
+    background-image: url('images/icone-indesign-white.png');
+}
+
+body:has(#dark-mode-toggle:checked) .icone-photoshop::before {
+    background-image: url('images/icone-photoshop-white.png');
+}
+
+body:has(#dark-mode-toggle:checked) .icone-after-effects::before {
+    background-image: url('images/icone-after-effects-white.png');
+}
+
+
+/* ---------------------------------------------------- */
+/* 8. SECTION PROJET (#projet) */
+/* ---------------------------------------------------- */
+/* Les textes sont déjà gérés par le BODY color */
+body:has(#dark-mode-toggle:checked) #text_projet{
+    color: #000000;
+}
+body:has(#dark-mode-toggle:checked) #projet h2{
+    color: #000000;
+}
+
+/* ---------------------------------------------------- */
+/* 9. SECTION CONTACTS (#contacts) */
+/* ---------------------------------------------------- */
+ 
+/* Liens/Icônes */
+body:has(#dark-mode-toggle:checked) #contacts a {
+    color: #f0f0f0; /* Texte des liens clair */
+}
+body:has(#dark-mode-toggle:checked) #liens img{
+    filter: invert(1);
+}
+
+/* Formulaire (le cadre blanc) */
+body:has(#dark-mode-toggle:checked) .form-wrapper {
+    background-color: #000000; /* Fond du formulaire sombre */
+    border: 3px solid #f0f0f0; /* Bordure claire */
+}
+ 
+/* Labels du formulaire */
+body:has(#dark-mode-toggle:checked) #contact-form label {
+    color: #f0f0f0; /* Labels clairs */
+}
+ 
+/* Lignes de saisie (inputs/textarea) */
+body:has(#dark-mode-toggle:checked) #contact-form input,
+body:has(#dark-mode-toggle:checked) #contact-form textarea {
+    background-color: #000000; 
+    border-bottom: 3px solid #f0f0f0; /* Ligne de saisie claire */
+    color: #f0f0f0; /* Texte saisi clair */
+}
+ 
+/* Bouton d'envoi */
+body:has(#dark-mode-toggle:checked) #submit-btn {
+    background-color: #ffd800; /* Garde le jaune vif pour l'accentuation */
+    color: black; /* Texte sur le bouton reste noir */
+}
+
+/* ---------------------------------------------------- */
+/* 10. SECTION FOOTER (#footer) */
+/* ---------------------------------------------------- */
+body:has(#dark-mode-toggle:checked) #footer {
+    background-color: #ffd800; /* Garde le jaune */
+}
+ 
+body:has(#dark-mode-toggle:checked) #text_footer p {
+    color: black; /* Assure que le texte du footer reste noir sur le jaune */
+}

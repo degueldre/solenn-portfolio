@@ -30,7 +30,7 @@ Degueldre_Solenn_Commande2_PortfolioV2/
 ## 
  Mise en ligne----
 ## 
-**Netlify :** [https://mon-portfolio.netlify.app](https://mon-portfolio.netlify.app)
+**Netlify :** degueldre-solenn-portfolio.netlify.app
 **GitHub Pages :** [https://mon-pseudo.github.io/portfolio-v2](https://mon-pseudo.github.io/portfolio-v2)
  Ressources utilisées
 [Tutoriel : Accessibilité web – L’Académie du Web](https://www.youtube.com/watch?
